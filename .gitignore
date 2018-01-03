@@ -1,0 +1,6 @@
+/test-classes/
+/gwt-unitCache/
+*.war
+*.zip
+*.bak
+

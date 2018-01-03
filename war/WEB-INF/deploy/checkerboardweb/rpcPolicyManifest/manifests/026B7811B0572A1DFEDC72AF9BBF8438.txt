@@ -1,0 +1,2 @@
+serviceClass: com.chk.client.serviceasync.GreetingService
+path: 5F2D2A74EF4427C0652728F484F8FDA7.gwt.rpc

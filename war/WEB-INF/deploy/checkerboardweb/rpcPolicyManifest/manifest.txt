@@ -1,0 +1,3 @@
+# Module checkerboardweb
+# RPC service class, partial path of RPC policy file
+com.chk.client.serviceasync.GreetingService, 5F2D2A74EF4427C0652728F484F8FDA7.gwt.rpc

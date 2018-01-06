@@ -1,0 +1,41 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:b="urn:import:org.gwtbootstrap3.client.ui">
+	<ui:style>
+	.asses{
+		width:50%;
+		margin-left:25%;
+	}
+	.float-right-handy{
+		float:right;
+		cursor:pointer;
+	}
+	</ui:style>
+	<g:HTMLPanel>
+	   	<b:Modal ui:field='wrongPass' title="Uh oh" closable="true" fade="true" dataBackdrop="STATIC" dataKeyboard="true" b:id="myModal">
+  			<b:ModalBody>
+    			<g:HTML>Your user id and pass don't match</g:HTML>
+  			</b:ModalBody>
+		  	<b:ModalFooter>
+		    	<b:Button type="DANGER" dataDismiss="MODAL">Try again</b:Button>
+		  	</b:ModalFooter>
+		</b:Modal>
+	    <b:Form addStyleNames='{style.asses}'>
+		  <b:FieldSet>
+		    <b:Legend>Enter your login information</b:Legend>
+		
+		    <b:FormGroup ui:field='loginFormGroup'>
+		      <b:FormLabel for="formEmail">Email</b:FormLabel>
+		      <b:Input ui:field="txtEmail" type="TEXT" b:id="formEmail"/>
+		      <b:FormLabel for="formPassword">Password</b:FormLabel>
+		      <b:Input ui:field="txtPass" type="PASSWORD" b:id="formPassword"/>
+		    </b:FormGroup>
+		    
+		    <b:Button ui:field='btnLogin' type='DANGER'>Log Me In</b:Button>
+		    <g:HTML><br/></g:HTML>
+		    <g:Anchor ui:field='forgotLink' addStyleNames='{style.float-right-handy}'>I forgot my password</g:Anchor>
+		  </b:FieldSet>
+		</b:Form>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,3 +1,3 @@
-# Module home
+# Module login
 # RPC service class, partial path of RPC policy file
 com.chk.client.serviceasync.LoginService, BFBDB5959B0C07D212F51F4D30ADF057.gwt.rpc

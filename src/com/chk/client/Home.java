@@ -48,7 +48,7 @@ public class Home implements EntryPoint {
 		// nav top
 //		NavigationLoggedIn nav = new NavigationLoggedIn();
 //		RootPanel.get("nav").add(nav);
-
+		System.out.println("Logged IN");
 
 	}
 

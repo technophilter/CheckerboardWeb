@@ -38,7 +38,7 @@
 		
 		  <b:NavbarCollapse b:id="navbar-collapse">
 		    <b:NavbarNav pull="RIGHT">
-		      <b:AnchorListItem ui:field='ancJoin'>Join Now!</b:AnchorListItem>
+		      <b:AnchorListItem ui:field='ancJoin'>Register</b:AnchorListItem>
 		      <b:AnchorListItem ui:field='ancLogin'>Log In</b:AnchorListItem>
 		    </b:NavbarNav>
 		    <b:NavbarText pull="RIGHT">

@@ -1,3 +1,7 @@
+body {
+	background: url("https://source.unsplash.com/category/nature/1920x1080") no-repeat center center fixed;
+}
+
 a:hover {
 	text-decoration: none;
 }
@@ -6,6 +10,7 @@ a:hover {
 .navbar-default {
 	background-color: #0dd167;
     border-color: #0dd167; 
+    border-radius: 0px;
 }
 /* Title */
 .navbar-default .navbar-brand {

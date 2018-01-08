@@ -68,8 +68,8 @@ public class LoginBox extends Composite {
 				// just try and remove it.
 				Cookies.removeCookie("uid");
 				Cookies.removeCookie("uid","/");
-				Cookies.removeCookie("uid","/sugar");
-				Cookies.removeCookie("uid","/sugar/");// causes issues if we don't do this when multiple people use the same pc
+				Cookies.removeCookie("uid","/checker");
+				Cookies.removeCookie("uid","/checker/");// causes issues if we don't do this when multiple people use the same pc
 				Cookies.setCookie("uid", txtEmail.getText(),  new Date(today.getTime() + (1000 * 60 * 60 * 24 * 365 * 4500 ))); 
 
 				// validate they put stuff in before calling to check

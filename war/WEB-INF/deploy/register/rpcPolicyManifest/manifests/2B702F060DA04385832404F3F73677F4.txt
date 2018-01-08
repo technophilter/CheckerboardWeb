@@ -1,0 +1,2 @@
+serviceClass: com.chk.client.serviceasync.RegisterService
+path: AE18E2863CD22BCF8F0BAFEF51367DC5.gwt.rpc

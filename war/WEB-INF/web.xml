@@ -11,10 +11,22 @@
     <servlet-class>com.chk.server.GreetingServiceImpl</servlet-class>
   </servlet>
   
+  <servlet>
+    <servlet-name>registerServlet</servlet-name>
+    <servlet-class>com.chk.server.RegisterServiceImpl</servlet-class>
+  </servlet>
+  
+  <!-- Servlet Mappings -->
   <servlet-mapping>
     <servlet-name>greetServlet</servlet-name>
     <url-pattern>/checkerboardweb/greet</url-pattern>
   </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>registerServlet</servlet-name>
+    <url-pattern>/register/register</url-pattern>
+  </servlet-mapping>
+  
   
   <!-- Default page to serve -->
   <welcome-file-list>

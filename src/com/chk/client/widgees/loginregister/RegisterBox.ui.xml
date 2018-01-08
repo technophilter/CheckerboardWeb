@@ -30,36 +30,47 @@
     		padding: 6px;
 	}
 	</ui:style>
-	<g:HTMLPanel>
-	   	<b:Modal ui:field='wrongPass' title="Uh oh" closable="true" fade="true" dataBackdrop="STATIC" dataKeyboard="true" b:id="myModal">
-  			<b:ModalBody>
-    			<g:HTML>Your user id and password don't match</g:HTML>
-  			</b:ModalBody>
-		  	<b:ModalFooter>
-		    	<b:Button type="SUCCESS" dataDismiss="MODAL">Try again</b:Button>
-		  	</b:ModalFooter>
-		</b:Modal>
+	
 
-			<b:Panel addStyleNames='{style.outerboxy}'>
-				<g:HTML><div><p class='{style.headery}'>Register</p></div></g:HTML>
-				<b:Panel addStyleNames='{style.innerboxy}'>
-			    <b:Form>
-				  <b:FieldSet>
-					<!-- <b:Legend>Enter your login information</b:Legend> -->
-				    <b:FormGroup ui:field='registerFormGroup'>
-				      <b:FormLabel for="formEmail">Email</b:FormLabel>
-				      <b:Input ui:field="txtEmail" type="TEXT" b:id="formEmail"/>
-				      <b:FormLabel for="formPassword">Password</b:FormLabel>
-				      <b:Input ui:field="txtPass" type="PASSWORD" b:id="formPassword"/>
-				    </b:FormGroup>
-				    
-				    <b:Button block='true' ui:field='btnRegister' type='SUCCESS'>Register Me</b:Button>
-				    <g:HTML><br/></g:HTML>
-				  </b:FieldSet>
-				</b:Form>
-				</b:Panel>	
-				
-			</b:Panel>
+	<g:HTMLPanel>
+	    <b:Modal ui:field='userExists' title="Oops" closable="true" fade="true" dataBackdrop="STATIC" dataKeyboard="true" b:id="myModal">
+ 			<b:ModalBody>
+   			<g:HTML>That email is already registered.</g:HTML>
+ 			</b:ModalBody>
+		  	<b:ModalFooter>
+		    	<b:Button block='true' ui:field="btnDiffEmail" type="SUCCESS">Use a Different Email</b:Button>
+		    	<g:HTML><br/></g:HTML>
+		    	<b:Button block='true' ui:field="btnLogin" type="SUCCESS">Login or Reset Password</b:Button>
+		  	</b:ModalFooter>
+		</b:Modal>	   
+	    <b:Modal ui:field='congrats' title="Congratulations" closable="true" fade="true" dataBackdrop="STATIC" dataKeyboard="true" b:id="myModal">
+ 			<b:ModalBody>
+   			<g:HTML>You've just been registered. Click to login and get started.</g:HTML>
+ 			</b:ModalBody>
+		  	<b:ModalFooter>
+		    	<b:Button block='true' ui:field="btnLogin2" type="SUCCESS">Login</b:Button>
+		  	</b:ModalFooter>
+		</b:Modal>	
+		<b:Panel addStyleNames='{style.outerboxy}'>
+			<g:HTML><div><p class='{style.headery}'>Register</p></div></g:HTML>
+			<b:Panel addStyleNames='{style.innerboxy}'>
+		    <b:Form>
+			  <b:FieldSet>
+				<!-- <b:Legend>Enter your login information</b:Legend> -->
+			    <b:FormGroup ui:field='registerFormGroup'>
+			      <b:FormLabel for="formEmail">Email</b:FormLabel>
+			      <b:Input ui:field="txtEmail" type="TEXT" b:id="formEmail"/>
+			      <b:FormLabel for="formPassword">Password</b:FormLabel>
+			      <b:Input ui:field="txtPass" type="PASSWORD" b:id="formPassword"/>
+			    </b:FormGroup>
+			    
+			    <b:Button block='true' ui:field='btnRegister' type='SUCCESS'>Register Me</b:Button>
+			    <g:HTML><br/></g:HTML>
+			  </b:FieldSet>
+			</b:Form>
+			</b:Panel>	
+			
+		</b:Panel>
 
 	</g:HTMLPanel>
 </ui:UiBinder> 

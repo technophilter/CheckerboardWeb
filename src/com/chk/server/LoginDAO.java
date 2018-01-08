@@ -26,8 +26,8 @@ public class LoginDAO {
 	      Class.forName("com.mysql.jdbc.Driver");
 	      // Setup the connection with the DB
 	      Connection connect = DriverManager
-	          .getConnection("jdbc:mysql://localhost?"
-	        		  + "user=sugarapp&password=Matrix99!PooPoo441223!!@");
+	          .getConnection("jdbc:mysql://nsd.cyhkvr2zultd.us-east-1.rds.amazonaws.com?"
+	        		  + "user=checkerapp&password=Matrix99!PooPoo441223!!@");
 	     // logger.debug("CONNECT OPEN");
 	      return connect;
 	  }

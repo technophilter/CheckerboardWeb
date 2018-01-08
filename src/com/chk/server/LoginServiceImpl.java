@@ -96,20 +96,20 @@ public class LoginServiceImpl extends RemoteServiceServlet implements LoginServi
 	 * @return
 	 */
 	public boolean validateSession(String userId){
-    	// we pass the user id to this mehtod, it looks up the session from
-		// the gwt server side stuffs, then uses the dao to lookup 
-		// the session stored when they logged in, those should match
-		logger.debug("validate login session method");
-		
-		
-		
-		HttpServletRequest request = this.getThreadLocalRequest();
-    	HttpSession session = request.getSession();
-    	String sessionId = session.getId();
-    	
-    	logger.debug("sessionId: " + sessionId);
-    	
-    	return loginDAO.validateSession(sessionId, userId);
+	    	// we pass the user id to this mehtod, it looks up the session from
+			// the gwt server side stuffs, then uses the dao to lookup 
+			// the session stored when they logged in, those should match
+			logger.debug("validate login session method");
+			
+			
+			
+			HttpServletRequest request = this.getThreadLocalRequest();
+	    	HttpSession session = request.getSession();
+	    	String sessionId = session.getId();
+	    	
+	    	logger.debug("sessionId: " + sessionId);
+	    	
+	    	return loginDAO.validateSession(sessionId, userId);
     	
 	}
 	

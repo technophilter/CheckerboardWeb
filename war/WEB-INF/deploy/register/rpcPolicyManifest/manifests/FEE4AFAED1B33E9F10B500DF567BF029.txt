@@ -1,2 +1,0 @@
-serviceClass: com.chk.client.serviceasync.LoginService
-path: BFBDB5959B0C07D212F51F4D30ADF057.gwt.rpc

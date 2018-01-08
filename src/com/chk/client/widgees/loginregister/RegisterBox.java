@@ -11,6 +11,10 @@ import org.gwtbootstrap3.client.ui.constants.ValidationState;
 import org.gwtbootstrap3.extras.animate.client.ui.Animate;
 import org.gwtbootstrap3.extras.animate.client.ui.constants.Animation;
 
+import com.chk.client.serviceasync.RegisterService;
+import com.chk.client.serviceasync.RegisterServiceAsync;
+import com.chk.shared.SharedConstants;
+import com.chk.shared.UserDTO;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -22,12 +26,9 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.Widget;
-import com.chk.client.serviceasync.LoginService;
-import com.chk.client.serviceasync.LoginServiceAsync;
-import com.chk.shared.SharedConstants; 
+import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.Widget; 
 
 public class RegisterBox extends Composite {
 
@@ -36,13 +37,17 @@ public class RegisterBox extends Composite {
 	interface RegisterBoxUiBinder extends UiBinder<Widget, RegisterBox> {
 	}
 	
-	private final LoginServiceAsync loginService = GWT.create(LoginService.class);
+	private final RegisterServiceAsync registerService = GWT.create(RegisterService.class);
 
 	@UiField Button btnRegister;
+	@UiField Button btnLogin;
+	@UiField Button btnLogin2;
+	@UiField Button btnDiffEmail;
 	@UiField Input txtEmail;
 	@UiField Input txtPass;
 	@UiField FormGroup registerFormGroup;
-	@UiField Modal wrongPass;
+	@UiField Modal userExists; 
+	@UiField Modal congrats; 
 	
 	public RegisterBox() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -50,7 +55,7 @@ public class RegisterBox extends Composite {
 		Logger logger = Logger.getLogger(RegisterBox.class);
 		logger.debug("register DEBUG LOG Msg");
  		
-		// login button
+		// register button
 		btnRegister.addClickHandler(new ClickHandler(){
 			public void onClick(ClickEvent event) {
 				Date today = new Date();
@@ -67,25 +72,28 @@ public class RegisterBox extends Composite {
 				// validate they put stuff in before calling to check
 				if (txtEmail!=null && txtEmail.getText().length() > 3 && 
 						txtPass!=null && txtPass.getText().length() > 3 ){
-					// ok, see if it's valid
-								    	
-//					loginService.login(txtEmail.getText(), txtPass.getText(), new AsyncCallback<String>(){
-//						public void onFailure(Throwable caught) {
-//							// something shitty happened
-//							caught.printStackTrace();
-//						}
-//						public void onSuccess(String result) {
-//							// ok, got a result, check to see if the pwd is correct
-//							if (result.equals(SharedConstants.LOGIN_SUCCESS)){
-//								// ok, log in is good... write the cookie that apparently is used by a bunch of shit
-//								
-//								Window.Location.assign(GWT.getHostPageBaseURL() + "./home.jsp");
-//							} else {
-//								// modal and make them try again
-//								wrongPass.show();
-//							}
-//						}
-//					});
+					
+					// ok, see if they've already registered
+					UserDTO user = new UserDTO();
+					user.setEmail(txtEmail.getText());
+					user.setPass(txtPass.getText());
+					registerService.checkDupeAndRegister(user, new AsyncCallback<String>(){
+						public void onFailure(Throwable caught) {
+							// if we fail, redirect them anyway
+							// Do something here, not sure what
+							caught.printStackTrace();
+						}
+						public void onSuccess(String result) {
+							// check to see if the user exists...
+							if (result.equals(SharedConstants.USER_ALREADY_EXISTS)){
+								userExists.show();
+							} else {
+								// ?? Redirect to login?
+								congrats.show(); 
+							}
+						}
+					});			    	
+ 
 							
 				} else {
 					// they didn't put in a username or a password, dick bags
@@ -102,7 +110,25 @@ public class RegisterBox extends Composite {
 		            btnRegister.click();
 		        }
 			}
-
+		});
+		
+		
+		btnDiffEmail.addClickHandler(new ClickHandler(){
+			public void onClick(ClickEvent event) { 
+				userExists.hide();
+			}
+		});
+		
+		btnLogin.addClickHandler(new ClickHandler(){
+			public void onClick(ClickEvent event) { 
+				Window.Location.assign(GWT.getHostPageBaseURL() + "./login.jsp");
+			}
+		});
+		
+		btnLogin2.addClickHandler(new ClickHandler(){
+			public void onClick(ClickEvent event) { 
+				Window.Location.assign(GWT.getHostPageBaseURL() + "./login.jsp");
+			}
 		});
 	}
 

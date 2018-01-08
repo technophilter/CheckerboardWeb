@@ -26,7 +26,7 @@
   <head>
   	<meta name="viewport" content="initial-scale=1">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>welcome</title>
+    <title>Checkerboard</title>
     <script type="text/javascript" language="javascript" src="login/login.nocache.js?ver=<%=versionId%>"></script>
     <link type="text/css" rel="stylesheet" href="abba.css?ver=<%=versionId%>">
   </head>

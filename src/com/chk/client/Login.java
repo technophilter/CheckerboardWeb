@@ -7,7 +7,7 @@ import com.chk.client.widgees.navigation.NavigationWidget;
 
 public class Login implements EntryPoint {
 
-	@Override
+ 
 	public void onModuleLoad() {
 
 

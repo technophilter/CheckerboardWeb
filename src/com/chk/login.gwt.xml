@@ -13,7 +13,8 @@
 
 	<!-- Specify the app entry point class.                         -->
 	<entry-point class="com.chk.client.Login"></entry-point>
-
+	
+	<!-- Module StyleSheet -->
 	<stylesheet src='/abba.css'/>	
 
   <!-- Specify the paths for translatable code                    -->

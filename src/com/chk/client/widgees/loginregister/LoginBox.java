@@ -38,7 +38,7 @@ public class LoginBox extends Composite {
 	
 	private final LoginServiceAsync loginService = GWT.create(LoginService.class);
 
-	@UiField Anchor forgotLink;
+//	@UiField Anchor forgotLink;
 	@UiField Button btnLogin;
 	@UiField Input txtEmail;
 	@UiField Input txtPass;
@@ -52,11 +52,11 @@ public class LoginBox extends Composite {
 		logger.debug("Login DEBUG LOG Msg");
 		
 		// forgot password link
-		forgotLink.addClickHandler(new ClickHandler(){
-			public void onClick(ClickEvent event) {
-				Window.Location.assign(GWT.getHostPageBaseURL() + "./passwordreset.jsp");
-			}
-		});
+//		forgotLink.addClickHandler(new ClickHandler(){
+//			public void onClick(ClickEvent event) {
+//				Window.Location.assign(GWT.getHostPageBaseURL() + "./passwordreset.jsp");
+//			}
+//		});
 		
 		// login button
 		btnLogin.addClickHandler(new ClickHandler(){
@@ -85,8 +85,6 @@ public class LoginBox extends Composite {
 						public void onSuccess(String result) {
 							// ok, got a result, check to see if the pwd is correct
 							if (result.equals(SharedConstants.LOGIN_SUCCESS)){
-								// ok, log in is good... write the cookie that apparently is used by a bunch of shit
-								
 								Window.Location.assign(GWT.getHostPageBaseURL() + "./home.jsp");
 							} else {
 								// modal and make them try again

@@ -9,9 +9,9 @@ public interface LoginService extends RemoteService{
 
 	String login(String user, String pass);
 	
-	String resetPassword(String user);
+//	String resetPassword(String user);
 
-	String changePassword(String user, String pass, String auth);
+//	String changePassword(String user, String pass, String auth);
 	
 	boolean validateSession(String userId);
 	

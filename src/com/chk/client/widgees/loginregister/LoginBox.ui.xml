@@ -55,7 +55,8 @@
 				    
 				    <b:Button block='true' ui:field='btnLogin' type='SUCCESS'>Log Me In</b:Button>
 				    <g:HTML><br/></g:HTML>
-				    <g:Anchor ui:field='forgotLink' addStyleNames='{style.float-right-handy}'>I forgot my password</g:Anchor>
+				    <!-- hiding for now -->
+				    <!-- <g:Anchor ui:field='forgotLink' addStyleNames='{style.float-right-handy}'>I forgot my password</g:Anchor> -->
 				  </b:FieldSet>
 				</b:Form>
 				</b:Panel>	

@@ -32,65 +32,63 @@ public class LoginServiceImpl extends RemoteServiceServlet implements LoginServi
 	    boolean valid = false;
 	    
 	    if (!hashFromDB.equals(SharedConstants.USER_NOT_FOUND)){
-	    	valid = BCrypt.checkpw(pass, hashFromDB);
+	    		valid = BCrypt.checkpw(pass, hashFromDB);
 	    }
 	    
 	    if ( valid ) {
 	    	
-	    	String sessionId = session.getId();
-	    	
-	    	// store session id for subsequent lookups to validate user
-	    	loginDAO.storeSessionId(sessionId, user);
-	    	
-	    	// stick the userId in the session for lookups
-	    	// we need this in the session so we can query with the id and validate session id on every page
-	    	session.setAttribute("userId", user);
-
-	    	return SharedConstants.LOGIN_SUCCESS;
-	    	
+		    	String sessionId = session.getId();
+		    	
+		    	// store session id for subsequent lookups to validate user
+		    	loginDAO.storeSessionId(sessionId, user);
+		    	
+		    	// stick the userId in the session for lookups
+		    	// we need this in the session so we can query with the id and validate session id on every page
+		    	session.setAttribute("userId", user);
+	
+		    	return SharedConstants.LOGIN_SUCCESS;
+		    	
 	    } else {
-	    	// either we didn't find them or they put in the wrong info
-	    	return SharedConstants.USER_NOT_FOUND;
+		    	// either we didn't find them or they put in the wrong info
+		    	return SharedConstants.USER_NOT_FOUND;
 	    }
 		
-		
-
 	}
 
 	/***
 	 * This method blanks out their current password and emails auth token
 	 */
-	public String resetPassword(String user) {
-
-		// check for success and send an email from here
-		String resetToken = loginDAO.resetPassword(user);
-		
-		if (!resetToken.equalsIgnoreCase(SharedConstants.USER_NOT_FOUND)){
-			// email out the token
-			// email their auth token
-			mailSender.resendToken(user, resetToken);
-			return resetToken;
-		} else {
-			// something is fucky if we couldn't find them
-			return SharedConstants.USER_NOT_FOUND;
-		}
-
-		
-	}
+//	public String resetPassword(String user) {
+//
+//		// check for success and send an email from here
+//		String resetToken = loginDAO.resetPassword(user);
+//		
+//		if (!resetToken.equalsIgnoreCase(SharedConstants.USER_NOT_FOUND)){
+//			// email out the token
+//			// email their auth token
+//			mailSender.resendToken(user, resetToken);
+//			return resetToken;
+//		} else {
+//			// something is fucky if we couldn't find them
+//			return SharedConstants.USER_NOT_FOUND;
+//		}
+//
+//		
+//	}
 	
 	
 
 	/***
 	 * Updates your pwd if auth token is correct
 	 */
-	public String changePassword(String user, String pass, String auth) {
-		// hash the password before we send it
-		String hashPass = BCrypt.hashpw(pass, BCrypt.gensalt()); 
-		return loginDAO.changePassword(user, hashPass, auth);
-	}
-	
+//	public String changePassword(String user, String pass, String auth) {
+//		// hash the password before we send it
+//		String hashPass = BCrypt.hashpw(pass, BCrypt.gensalt()); 
+//		return loginDAO.changePassword(user, hashPass, auth);
+//	}
+
 	/**
-	 * Validates session for us so we know they successfully loged in
+	 * Validates session for us so we know they successfully logged in
 	 * Used by every page
 	 * @param userId
 	 * @return
